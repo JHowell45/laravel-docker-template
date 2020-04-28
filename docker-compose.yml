@@ -4,7 +4,7 @@ networks:
 services:
   nginx:
     image: "nginx:stable-alpine"
-    container_name: laravel-nginx
+    container_name: nginx
     ports:
       - "8080:80"
     volumes:
@@ -17,7 +17,7 @@ services:
       - laravel
   mysql:
     image: "mysql:5.7.22"
-    container_name: laravel-mysql
+    container_name: mysql
     restart: unless-stopped
     tty: true
     environment:
@@ -32,6 +32,12 @@ services:
       - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - laravel
+  redis:
+    image: redis
+    container_name: redis
+    restart: unless-stopped
+    networks:
+      - laravel
   php:
     build:
       context: .
@@ -41,11 +47,5 @@ services:
       - "./src:/var/www"
     ports:
       - "9000:9000"
-    networks:
-      - laravel
-  redis:
-    image: redis
-    container_name: laravel-redis
-    restart: unless-stopped
     networks:
       - laravel
