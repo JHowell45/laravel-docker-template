@@ -1,1 +1,1 @@
-docker-compose exec php php /var/www/artisan migrate
+docker-compose exec laravel laravel /var/www/artisan migrate
