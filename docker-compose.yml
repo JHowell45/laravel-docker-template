@@ -35,17 +35,15 @@ services:
     networks:
       - laravel
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:fpm-alpine
+    image: "phpmyadmin/phpmyadmin:fpm-alpine"
     container_name: phpmyadmin
     depends_on:
       - mysql
-    # links:
-    #   - mysql
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: password
     ports:
-      - 8081:80
+      - "8081:80"
     networks:
       - laravel
   redis:
