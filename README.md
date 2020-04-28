@@ -6,6 +6,7 @@ Laravel Docker template that is running behind Nginx.
   - [tl;dr:](#tldr)
   - [Application Blueprint:](#application-blueprint)
   - [Setting up:](#setting-up)
+  - [Resources Used:](#resources-used)
 
 ## tl;dr:
 
@@ -27,3 +28,9 @@ All of the following applications are hooked up together within Docker and the L
 To start you'll need to run of either of the `composer_install` scripts within this project or you can run `composer install` locally on your machine if you have php and composer installed, though this application is setup so you don't have to do that.
 
 Once the `vendor` directory has been created you simply run `docker-compose up` in the terminal or you can run the Docker application using something like Dockstation to run the `docker-compose` file, this will boot up the application and the additional resources.
+
+## Resources Used:
+
+Dockerising the application:
+
+- [For setting up the application and writing some of the scripts used.](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0)
