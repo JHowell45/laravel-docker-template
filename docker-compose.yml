@@ -29,7 +29,7 @@ services:
       SERVICE_NAME: mysql
     volumes:
       - ./mysql/data:/var/lib/mysql
-      # - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - laravel
   php:
