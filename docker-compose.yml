@@ -27,6 +27,9 @@ services:
       MYSQL_ROOT_PASSWORD: secret
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      # - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - laravel
   php:
