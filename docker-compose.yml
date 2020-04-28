@@ -35,6 +35,8 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:fpm-alpine
     container_name: phpmyadmin
+    depends_on:
+      - mysql
     # links:
     #   - mysql
     environment:
