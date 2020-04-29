@@ -3,27 +3,27 @@
 Laravel Docker template that is running behind Nginx.
 
 - [laravel-docker-template](#laravel-docker-template)
-  - [tl;dr:](#tldr)
-  - [Application Blueprint:](#application-blueprint)
-  - [Setting up:](#setting-up)
+  - [tl;dr](#tldr)
+  - [Application Blueprint](#application-blueprint)
+  - [Instructions](#instructions)
 
-## tl;dr:
+## tl;dr
 
 You can run the application using `docker-compose up` or through an application like DockStation. The application can be found running on `127.0.0.1:8080`.
 
-## Application Blueprint:
+## Application Blueprint
 
 This application uses the following technologies:
 
 - MySQL
 - Redis
 - Nginx
-- a base Laravel 6 project taken from the laravel github.
+- Laravel (6.18.8).
 
-All of the following applications are hooked up together within Docker and the Laravel app .env has been updated to point to the correct host named in the docker compose file.
+All of the following applications are hooked up together within Docker compose file and the Laravel app `.env.example` has been updated to point to the correct host named in the docker compose file, you simply need to create your own `.env` using the example as a base.
 
-## Setting up:
+## Instructions
 
-To start you'll need to run of either of the `composer_install` scripts within this project or you can run `composer install` locally on your machine if you have php and composer installed, though this application is setup so you don't have to do that.
+- To start, the project comes with a default laravel base project version 6.18.8. If you are unhappy with that version this project comes with a script `get_base_project.sh` you can run this and pass the version number as the param to get the specific version you want.
 
-Once the `vendor` directory has been created you simply run `docker-compose up` in the terminal or you can run the Docker application using something like Dockstation to run the `docker-compose` file, this will boot up the application and the additional resources.
+- Next you'll want to install the Laravel packages. This can by done by running `cd src` and running either `composer_install.sh` or `composer_install_win.sh` depending on which system you're running this on. It'll install the Laravel packages and you should see a local `vendor` directory in your `src` directory.
