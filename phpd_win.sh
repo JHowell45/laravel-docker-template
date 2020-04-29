@@ -1,0 +1,1 @@
+winpty docker-compose exec app php $@
