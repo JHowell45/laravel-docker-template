@@ -30,6 +30,8 @@ All of the following applications are hooked up together within Docker compose f
 
 - Next you need to run `docker-compose build` to create the docker images based from the Dockerfiles created for Nginx and the Laravel app.
 
+- Next, it's important to setup the `.env` file for the Laravel application, without it many of the scripts won't work along with the application itself. You should be able to copy the `.env.example` verbatim into a created `.env` file and it should work.
+
 - To run the project you simply need to run `docker-compose up -d` the `-d` param makes sure it's running in the background so it doesn't take up your terminal. I've tried running it in "Dockstation", however ended up having issues running the next few commands for the project, it's better to just use the terminal, YMMV.
 
 - Next there are a few commands that need to be run to generate keys and migrate the database. For this purpose I've provided two scripts for running the php commands, they are `phpd.sh` and `phpd_win.sh` they basically run `docker-compose exec app php $@` with the win prefacing it with `winpty`. Theses commands make it much easier to run the necessary commands.
