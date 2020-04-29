@@ -1,1 +1,0 @@
-docker run --rm --interactive --volume $(cmd //c cd)\src:/app composer install
