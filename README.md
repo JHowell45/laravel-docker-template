@@ -6,6 +6,8 @@ Laravel Docker template that is running behind Nginx.
   - [tl;dr](#tldr)
   - [Application Blueprint](#application-blueprint)
   - [Instructions](#instructions)
+  - [Troubleshooting](#troubleshooting)
+    - [Can't run the migrations?](#cant-run-the-migrations)
 
 ## tl;dr
 
@@ -39,3 +41,39 @@ All of the following applications are hooked up together within Docker compose f
 - The commands that are needed to be run are `<base_script> artisan key:generate` and `<base_script> artisan optimise` for generating a key and optimisng the app and `<base_script> artisan migrate --seed` for running the database migrations. You need to replace the `<base_script>` with `phpd.sh` or `phpd_win.sh` depending on the system.
 
 - With this done you should be finally setup and ready to run your Laravel application. :)
+
+
+## Troubleshooting
+
+This section is for addressing issues the I ended up having a problems with.
+
+
+### Can't run the migrations?
+I had an issue where I kept seeing the following error message:
+```
+$ ./phpd_win.sh artisan migrate --seed
+
+   Illuminate\Database\QueryException  : SQLSTATE[HY000] [1045] Access denied for user 'root'@'172.26.0.2' (using password: NO) (SQL:
+
+  at /var/www/vendor/laravel/framework/src/Illuminate/Database/Connection.php:669
+    665|         // If an exception occurs when attempting to run a query, we'll format the error
+    666|         // message to include the bindings with SQL, which will make this exception a
+    667|         // lot more helpful to the developer instead of just the database's errors.
+    668|         catch (Exception $e) {
+  > 669|             throw new QueryException(
+    670|                 $query, $this->prepareBindings($bindings), $e
+    671|             );
+    672|         }
+    673|
+
+  Exception trace:
+
+  1   PDOException::("SQLSTATE[HY000] [1045] Access denied for user 'root'@'172.26.0.2' (using password: NO)")
+      /var/www/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70
+
+  2   PDO::__construct("mysql:host=database;port=3306;dbname=laravel", "root", "", [])
+      /var/www/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70
+
+  Please use the argument -v to see more details.
+```
+First thing, make sure that the `DB_USERNAME` and the `DB_PASSWORD` environment variables are wrapped in `"` quotes in the `.env` file. You then may have to run `./phpd_win.sh artisan config:clear` and `./phpd_win.sh artisan cache:clear` to clear the applications environment variables and reset them to the new ones set. Then when you run the migration command it should work.
