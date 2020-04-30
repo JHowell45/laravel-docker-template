@@ -22,6 +22,10 @@ services:
       - MYSQL_ROOT_PASSWORD=secret
     ports:
       - "33061:3306"
+  redis:
+    image: "redis:rc-alpine"
+    ports:
+      - "63790:6379"
   app:
     build:
       context: ./
@@ -32,3 +36,4 @@ services:
     environment:
       - DB_PORT=3306
       - DB_HOST=database
+      - REDIS_HOST=redis
