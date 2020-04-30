@@ -4,8 +4,8 @@ volumes:
 services:
   nginx:
     build:
-      context: ./.docker/dev/nginx/
-      dockerfile: web.dockerfile
+      context: ./nginx/
+      dockerfile: web.dev.dockerfile
     working_dir: /var/www
     volumes:
       - "./src:/var/www"
@@ -28,8 +28,8 @@ services:
       - "63790:6379"
   app:
     build:
-      context: ./.docker/dev/laravel/
-      dockerfile: app.dockerfile
+      context: ./src/
+      dockerfile: app.dev.dockerfile
     working_dir: /var/www
     volumes:
       - "./src:/var/www"
