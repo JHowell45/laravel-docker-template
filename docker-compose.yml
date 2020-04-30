@@ -4,7 +4,7 @@ volumes:
 services:
   nginx:
     build:
-      context: ./
+      context: ./.docker/dev/
       dockerfile: web.dockerfile
     working_dir: /var/www
     volumes:
@@ -28,7 +28,7 @@ services:
       - "63790:6379"
   app:
     build:
-      context: ./
+      context: ./.docker/dev/
       dockerfile: app.dockerfile
     working_dir: /var/www
     volumes:
