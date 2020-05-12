@@ -38,7 +38,7 @@ services:
     depends_on:
       - database
     links:
-      - database
+      - database:db
     ports:
       - "8181:80"
   app:
