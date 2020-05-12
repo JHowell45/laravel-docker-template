@@ -16,16 +16,35 @@ services:
     volumes:
       - "dbdata:/var/lib/mysql"
     environment:
-      - MYSQL_DATABASE=homestead
-      - MYSQL_USER=homestead
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+      # - MYSQL_DATABASE=homestead
+      # - MYSQL_USER=homestead
+      # - MYSQL_PASSWORD=secret
+      # - MYSQL_ROOT_PASSWORD=secret
     ports:
       - "33061:3306"
   redis:
     image: "redis:rc-alpine"
     ports:
       - "63790:6379"
+  database_admin:
+    image: "phpmyadmin/phpmyadmin:latest"
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: password
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    restart: always
+    depends_on:
+      - database
+    links:
+      - database
+    ports:
+      - "8181:80"
   app:
     build:
       context: ./.docker/dev/laravel/
