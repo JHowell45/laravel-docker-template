@@ -3,11 +3,12 @@
 Laravel Docker template that is running behind Nginx.
 
 - [laravel-docker-template](#laravel-docker-template)
-  - [tl;dr](#tldr)
-  - [Application Blueprint](#application-blueprint)
-  - [Instructions](#instructions)
-  - [Troubleshooting](#troubleshooting)
-    - [Can't run the migrations?](#cant-run-the-migrations)
+	- [tl;dr](#tldr)
+	- [Application Blueprint](#application-blueprint)
+	- [Instructions](#instructions)
+	- [Troubleshooting](#troubleshooting)
+		- [Can't run the migrations?](#cant-run-the-migrations)
+	- [TODO](#todo)
 
 ## tl;dr
 
@@ -42,14 +43,14 @@ All of the following applications are hooked up together within Docker compose f
 
 - With this done you should be finally setup and ready to run your Laravel application. :)
 
-
 ## Troubleshooting
 
 This section is for addressing issues the I ended up having a problems with.
 
-
 ### Can't run the migrations?
+
 I had an issue where I kept seeing the following error message:
+
 ```
 $ ./phpd_win.sh artisan migrate --seed
 
@@ -76,4 +77,9 @@ $ ./phpd_win.sh artisan migrate --seed
 
   Please use the argument -v to see more details.
 ```
+
 First thing, make sure that the `DB_USERNAME` and the `DB_PASSWORD` environment variables are wrapped in `"` quotes in the `.env` file. You then may have to run `./phpd_win.sh artisan config:clear` and `./phpd_win.sh artisan cache:clear` to clear the applications environment variables and reset them to the new ones set. Then when you run the migration command it should work.
+
+## TODO
+
+- Fix the NPM commands to be able to be run using a docker container.
