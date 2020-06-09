@@ -2,13 +2,7 @@
 
 Laravel Docker template that is running behind Nginx.
 
-- [laravel-docker-template](#laravel-docker-template)
-	- [tl;dr](#tldr)
-	- [Application Blueprint](#application-blueprint)
-	- [Instructions](#instructions)
-	- [Troubleshooting](#troubleshooting)
-		- [Can't run the migrations?](#cant-run-the-migrations)
-	- [TODO](#todo)
+- [laravel-docker-template](#laravel-docker-template) - [tl;dr](#tldr) - [Application Blueprint](#application-blueprint) - [Instructions](#instructions) - [Troubleshooting](#troubleshooting) - [Can't run the migrations?](#cant-run-the-migrations) - [TODO](#todo)
 
 ## tl;dr
 
@@ -29,7 +23,7 @@ All of the following applications are hooked up together within Docker compose f
 
 - To start, the project comes with a default laravel base project version 6.18.8. If you are unhappy with that version this project comes with a script `get_base_project.sh` you can run this and pass the version number as the param to get the specific version you want.
 
-- Next you'll want to install the Laravel packages. This can by done by running `cd src` and running either `composer_install.sh` or `composer_install_win.sh` depending on which system you're running this on. It'll install the Laravel packages and you should see a local `vendor` directory in your `src` directory.
+- Next you'll want to install the Laravel packages. This can by done by running `cd src` and running either `./composerd.sh install` or `./composerd_win.sh install` depending on which system you're running this on. It'll install the Laravel packages and you should see a local `vendor` directory in your `src` directory.
 
 - Next you need to run `docker-compose build` to create the docker images based from the Dockerfiles created for Nginx and the Laravel app.
 
