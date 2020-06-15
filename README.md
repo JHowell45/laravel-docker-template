@@ -21,7 +21,7 @@ All of the following applications are hooked up together within Docker compose f
 
 ## Instructions
 
-- To start, the project comes with a default laravel base project version 6.18.8. If you are unhappy with that version this project comes with a script `get_base_project.sh` you can run this and pass the version number as the param to get the specific version you want.
+- To start, you need to create a laravel project. This can be done by either running the script `get_base_project.sh` and pass the version number as the param to grab the gibhub specific version you want or you can run the `laraveld_create.sh` or `laraveld_create_win.sh` to create an update to date project using the composer command. You need to pass the name for the project you want to create if you plan to use the second command.
 
 - Next you'll want to install the Laravel packages. This can by done by running `cd src` and running either `./composerd.sh install` or `./composerd_win.sh install` depending on which system you're running this on. It'll install the Laravel packages and you should see a local `vendor` directory in your `src` directory.
 
